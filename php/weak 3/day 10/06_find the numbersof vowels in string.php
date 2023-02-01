@@ -11,29 +11,32 @@ for($i=0; $i<$string; $i++){
 
 
 <?php
-// function check($myvalue){
-//     $mystr = array($myvalue);
-//     $string = strlen($myst);
-//     $n=0;
-//     for($i=0; $i<$string; $i++){  
-//         if ($mystr[i]=='a' || $mystr[i]=='e' || $mystr[i]=='i' || $mystr[i]=='o' || $mystr[i]=='u')
-//         $n++;
-//          }
-//          return $n;
-// }
-$string = 'iamgoodboy';
+function check($mystr){
+    // $mystr = array($myvalue);
+    $string = strlen($mystr);
+    $n=0;
+    for($i=0; $i<$string; $i++){  
+        if ($mystr[$i]=='a' || $mystr[$i]=='e' || $mystr[$i]=='i' || $mystr[$i]=='o' || $mystr[$i]=='u')
+        $n++;
+         }
+         return $n;
+}
+$myarr = ['iamgoodboy','vgbnmvyubnijmko','bnjiyubnijyvtyubn','qwexrdcftvbgyhnujimko'];
 // $x = check($string);
 // echo $x;
 // print_r($mystr);
-$n=0;
-$s = strlen($string);
-for($i=0; $i<$s; $i++){  
-             if ($string[$i]=='a' || $string[$i]=='e' || $string[$i]=='i' || $string[$i]=='o' || $string[$i]=='u');
-            $n++;
-             }
-print_r($s);
-echo "<br>";
-print_r($n);
+// $n=0;
+// $s = strlen($string);
+// print_r($s);
+// for($i=0; $i<$s; $i++){  
+//     echo "<br>";
+// print_r($string[$i]);
+//              if ($string[$i]=='a' || $string[$i]=='e' || $string[$i]=='i' || $string[$i]=='o' || $string[$i]=='u')
+//                     $n++;
+//              }
+// echo "<br>";
+// print_r($n);
+print_r(array_map("check",$myarr));
 ?>
 
 
