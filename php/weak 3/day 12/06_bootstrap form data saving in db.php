@@ -47,6 +47,21 @@
   </div>
 </nav>
 
+          <?php
+          $servername = "localhost";
+          $username = "root";
+          $password = "";
+          $database = "mtalkz";
+
+          $conn = mysqli_connect($servername, $username, $password, $database);
+          echo "Connection estiblish with server \n After submit data will be inserted to the Database \n ";
+
+
+          $email = $_POST["email"];
+          $password = $_POST['pass'];
+          $sql = "INSERT INTO `email pass` ( `email`, `password`) VALUES ('$email', '$password')";
+          $result = mysqli_query($conn, $sql);
+          ?>
 
 
 
