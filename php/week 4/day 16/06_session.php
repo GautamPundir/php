@@ -5,4 +5,4 @@ $_SESSION['username'] = "Mtalkz";
 $_SESSION['favcategory'] = "fitness";
 echo "We have save your session";
 
-?>
+session_destroy();

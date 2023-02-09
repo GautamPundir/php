@@ -1,10 +1,9 @@
 <?php
 
-
+session_start();
 echo $_SESSION['username'];
 echo "<hr>";
-echo "Your secategory is " . $_SESSION['favcategory'];
-
+echo "Your select ategory is " . $_SESSION['favcategory'];
 
 
 ?>
