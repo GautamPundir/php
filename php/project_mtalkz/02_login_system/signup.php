@@ -1,23 +1,33 @@
-
 <?php
 $showAlert = false;
 $showError = false;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     include 'C:\xampp\htdocs\mtalkz\php\project_mtalkz\02_login_system\partials\_dbconnect.php';
-
     $username = $_POST["username"];
     $password = $_POST["password"];
     $cpassword = $_POST["cpassword"];
-    $exists=false;
-    if(($password == $cpassword) && $exists==false){
-        $sql = "INSERT INTO `users` ( `username`, `password`, `dt`) VALUES ('$username', '$password', current_timestamp())";
-        $result = mysqli_query($conn, $sql);
-        if ($result){
-            $showAlert = true;
-        }
+    // $exists=false;
+
+    $existSql = "SELECT * FROM `users` WHERE username = '$username'";
+    $result = mysqli_query($conn, $existSql);
+    $numExistRows = mysqli_num_rows($result);
+    if($numExistRows > 0){
+        // $exists = true;
+        $showError = "Username Already Exists Pick another.";
     }
     else{
-        $showError = " Password do not match with Confirm Password.";
+        // $exists = false; 
+        if(($password == $cpassword)){
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+            $sql = "INSERT INTO `users` ( `username`, `password`, `dt`) VALUES ('$username', '$hash', current_timestamp())";
+            $result = mysqli_query($conn, $sql);
+            if ($result){
+                $showAlert = true;
+            }
+        }
+        else{
+            $showError = "Passwords do not match";
+        }
     }
 }
     
@@ -37,6 +47,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>Signup</title>
+    <style>
+        body{
+            /* filter: blur(8px);
+  -webkit-filter: blur(8px); */
+           backdrop-filter: blur(6px);
+           background-image: url('./partials/mtalkz_web.png')
+        }
+    </style>
 </head>
 
 <body >

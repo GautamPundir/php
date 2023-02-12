@@ -5,7 +5,7 @@ session_start();
 if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
     header("location: login.php");
     exit;
-}
+} 
 
 ?>
 
@@ -18,13 +18,34 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']!=true){
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Welcome</title>
+    <title>Welcome </title>
+    
+    <style>
+      body {
+        background-image: url('./partials/mtalkz_web.png')
+      }
+    </style>
   </head>
   <body>
     
     <?php
     require 'partials/_nav.php';
+
+  
     ?>
+
+<h1 class="alert-heading text-center mt-5 pt-5">Welcome - <?php echo $_SESSION['username']?></h1>
+<!-- <div class="container my-3">
+    <div class="alert alert-success" role="alert">
+      <h4 class="alert-heading">Welcome - <?php echo $_SESSION['username']?></h4>
+      <p>Hey how are you doing? Welcome to iSecure. You are logged in as <?php echo $_SESSION['username']?>. Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+      <hr>
+      <p class="mb-0">Whenever you need to, be sure to logout <a href="/mtalkz/php/project_mtalkz/02_login_system/logout.php"> using this link.</a></p>
+    </div>
+  </div> -->
+
+
+  
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
